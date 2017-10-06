@@ -1,0 +1,64 @@
+.post .title {
+  position:relative;
+  top: 10px;
+  font-weight:bold;
+  padding-left: 15px;
+}
+
+.post .postBody {
+  position: relative;
+  left:25px;
+}
+
+.post {
+  background-color: lightgrey;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px grey;
+  padding-left: 8px;
+}
+
+.post .detailsLink {
+  position: relative;
+  float: right;
+  bottom: 80px;
+  right: 10px;
+}
+
+.comment {
+  position: relative;
+  float: left;
+  top: 30px;
+  left: 12%;
+  width: 80%;
+  background-color: inherit;
+  border-radius: inherit;
+  box-shadow: inherit;
+  padding-left: 8px;
+}
+
+.comment .commentBody {
+  position: relative;
+  float:left;
+  padding-left:20px;
+  width: 90%;
+  text-align: left;
+  overflow-wrap: break-word;
+  font-size: .8em;
+}
+
+.voteScore {
+  position: absolute;
+  float: left;
+  margin:auto;
+}
+
+.comment .author {
+  position:relative;
+  margin:auto;
+  top: 10px;
+  font-weight:bold;
+  padding-left: 15px;
+}
