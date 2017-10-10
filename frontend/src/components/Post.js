@@ -8,9 +8,9 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
-        <p className="title">Title by Author</p>
-        <p className="voteScore">1</p>
-        <p className="postBody">Body of a post</p>
+        <p className="title">{this.props.details? this.props.details.title : "N/A"}</p>
+        <p className="voteScore">{this.props.details? this.props.details.voteScore : "N/A"}</p>
+        <p className="postBody"><b>{this.props.details? this.props.details.author : "N/A"}:</b> {this.props.details? this.props.details.body : "N/A"}</p>
         <Link className="detailsLink" to="/details"><p>Full Details</p></Link>
         <Comment />
       </div>

@@ -1,0 +1,86 @@
+.App .siteTitle {
+  padding: 15px;
+  margin:auto;
+  color:#ECF0F1;
+  background-color: #2C3E50;
+}
+
+.App .categories {
+  position: absolute;
+  width: 60%;
+  background-color: #EDBB99;
+  min-height: 100%;
+  height: auto !important;
+  height: 120%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+@media screen and (max-width: 500px){
+  .App .categories {
+    position: absolute;
+    width: 100%;
+    background-color: #EDBB99;
+    min-height: 10%;
+    height: auto !important;
+    height: 100%;
+    margin:auto;
+  }
+
+  .App .comment {
+    top: 0px;
+  }
+}
+
+.App .Category {
+  padding-top: 20px;
+  padding-left: 8px;
+  clear: both;
+}
+
+.detailsLink {
+  color: #2874A6;
+}
+
+.NewPostField input:focus {
+  border-bottom: solid #3498DB 2.5px;
+}
+
+.NewPostField [contentEditable=true] {
+  background-color: inherit;
+  border-bottom: solid #E5E7E9 2.5px;
+  resize: none;
+  outline: none;
+}
+
+.NewPostField [contentEditable=true]:focus {
+  border-bottom: solid #3498DB 2.5px;
+}
+
+[contentEditable=true]:empty:not(:focus):before, [contentEditable=true]:focus:empty:before{
+  content:attr(placeholder);
+}
+
+#title {
+  position: absolute;
+  left: 5%;
+  width: 40%;
+}
+
+#author {
+  position:absolute;
+  left: 55%;
+  width: 40%;
+}
+
+#body {
+  position: relative;
+  margin-top: 15px;
+  left: 10%;
+  width: 80%;
+}
+
+.placeholder {
+  margin:auto;
+  padding-bottom: 3px;
+}
