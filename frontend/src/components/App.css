@@ -5,18 +5,33 @@
   background-color: #2C3E50;
 }
 
+.App .footer {
+  position:absolute;
+  bottom:0;
+  width: 100%;
+  height: 66px;
+  background-color: #2C3E50;
+}
+
 .App .categories {
   position: absolute;
   width: 60%;
   background-color: #EDBB99;
   min-height: 100%;
   height: auto !important;
-  height: 120%;
   margin-left: 20%;
   margin-right: 20%;
+  list-style: none;
+  padding-left: 10px;
+  margin-top:0px;
+  margin-bottom:-50px;
 }
 
 @media screen and (max-width: 500px){
+  .App .siteTitle {
+    width:100%;
+  }
+
   .App .categories {
     position: absolute;
     width: 100%;
@@ -26,15 +41,15 @@
     height: 100%;
     margin:auto;
   }
+}
 
-  .App .comment {
-    top: 0px;
-  }
+.App .posts {
+  padding-left: 4%;
+  list-style: none;
 }
 
 .App .Category {
   padding-top: 20px;
-  padding-left: 8px;
   clear: both;
 }
 

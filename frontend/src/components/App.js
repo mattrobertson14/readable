@@ -22,6 +22,14 @@ let posts = [
 let comments = []
 
 class App extends Component {
+  state = {
+    showNewPostForm: false
+  }
+
+  showForm = () => {
+    this.setState({showNewPostForm : true })
+  }
+
   render() {
 
       console.log(JSON.stringify(categories))
@@ -29,16 +37,18 @@ class App extends Component {
       <div className="App">
         <h1 className="siteTitle">Readable</h1>
         <Route exact path="/" render={() => (
-          <div className="categories">
+          <ol className="categories">
             {categories.map(cat => (
-              <Category name={cat.name} />
+              <li key={cat.name}>
+                <Category name={cat.name} showForm={this.showForm} showPostForm={this.state.showNewPostForm}/>
+              </li>
             ))}
-          </div>
+          </ol>
         )} />
-      <Route path="/details" render={() => (
-          <div className="details">
-            <PostDetails />
-          </div>
+        <Route path="/details" render={() => (
+            <div className="details">
+              <PostDetails />
+            </div>
         )} />
       </div>
     );
@@ -49,12 +59,16 @@ const Category = (props) =>{
   return (
     <div className="Category">
       <h2 className="categoryName">{props.name}</h2>
-      <NewPostField />
-      {posts.filter(p => (p.category === props.name)).map(post => (
-        <span className="posts">
-          <Post details={post} />
-        </span>
-      ))}
+      {props.showPostForm? <NewPostField /> :
+        <button onClick={props.showForm}>Add New Post</button>
+      }
+      <ol className="posts">
+        {posts.filter(p => (p.category === props.name)).map(post => (
+          <li key={post.id}>
+            <Post details={post} />
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }

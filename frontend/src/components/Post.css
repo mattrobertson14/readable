@@ -7,18 +7,19 @@
 
 .post .postBody {
   position: relative;
-  left:25px;
+  left:5%;
+  width: 90%;
 }
 
 .post {
   position:relative;
   background-color: lightgrey;
-  padding-bottom: 20px;
-  margin-left: 20px;
+  padding-bottom: 1px;
   margin-right: 20px;
   border-radius: 10px;
   box-shadow: 5px 5px grey;
   padding-left: 8px;
+  clear:both;
 }
 
 .post .detailsLink {
@@ -29,15 +30,13 @@
 }
 
 .comment {
-  position: relative;
-  float: left;
-  top: 30px;
-  left: 12%;
+  float: right;
   width: 80%;
   background-color: inherit;
   border-radius: inherit;
   box-shadow: inherit;
   padding-left: 8px;
+  margin:10px;
 }
 
 .comment .commentBody {
