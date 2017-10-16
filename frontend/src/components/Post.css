@@ -9,6 +9,7 @@
   position: relative;
   left:5%;
   width: 90%;
+  font-size: .8em;
 }
 
 .post {
@@ -19,7 +20,6 @@
   border-radius: 10px;
   box-shadow: 5px 5px grey;
   padding-left: 8px;
-  clear:both;
 }
 
 .post .detailsLink {
@@ -31,12 +31,13 @@
 
 .comment {
   float: right;
-  width: 80%;
+  width: 90%;
   background-color: inherit;
   border-radius: inherit;
   box-shadow: inherit;
   padding-left: 8px;
   margin:10px;
+  clear:both;
 }
 
 .comment .commentBody {
@@ -61,4 +62,8 @@
   top: 10px;
   font-weight:bold;
   padding-left: 15px;
+}
+
+.postDetails .comment {
+  float:left
 }
