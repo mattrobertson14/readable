@@ -46,6 +46,24 @@ export const getPostComments = (id) => {
   })
 }
 
+export const submitPost = (id, timestamp, title, body, author, category) => {
+  return axios.post(serverAddress + '/posts', {
+    id,
+    timestamp,
+    title,
+    body,
+    author,
+    category
+  }, {
+    headers: {'Authorization' : 'something'},
+    withCredentials: true
+  }).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+}
+
 
 /* TEMPLATE FOR NEW API CALL:
 

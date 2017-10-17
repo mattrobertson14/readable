@@ -5,19 +5,6 @@ import Comment from './Comment.js'
 import './Post.css'
 
 class Post extends Component {
-
-  state = {
-    comments: []
-  }
-
-  componentDidMount() {
-    ReadableAPI.getPostComments(this.props.details.id).then(res => {
-      this.setState({ comments : res })
-    }).catch(error => {
-      console.log("this post couldn't be found")
-    })
-  }
-
   render() {
     return (
       <div className="post">
@@ -25,12 +12,6 @@ class Post extends Component {
         <p className="voteScore">{this.props.details? this.props.details.voteScore : "N/A"}</p>
         <p className="postBody"><b>{this.props.details? this.props.details.author : "N/A"}:</b> {this.props.details? this.props.details.body : "N/A"}</p>
         <Link className="detailsLink" to={"/details/"+this.props.details.id}><p>Full Details</p></Link>
-        {this.state.comments.sort((a,b)=>{
-          return parseInt(a.voteScore,10)-parseInt(b.voteScore,10)
-          }).map(com => (
-            <Comment data={com} key={com.id}/>
-          ))
-        }
       </div>
     )
   }
