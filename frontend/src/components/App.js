@@ -29,7 +29,11 @@ class App extends Component {
   }
 
   showForm = () => {
-    this.setState({showNewPostForm : true })
+    this.setState({ showNewPostForm : true })
+  }
+
+  closeForm = () => {
+    this.setState({ showNewPostForm : false })
   }
 
   addPost = () => {
@@ -56,9 +60,10 @@ class App extends Component {
             {this.state.showNewPostForm?
               <span>
                 <NewPostField categories={this.state.categories} />
-                <button onClick={this.addPost}>Submit</button>
+                <button className="formSubmit" onClick={this.addPost}>Submit</button>
+                <button className="formCancel" onClick={this.closeForm}>Cancel</button>
               </span> :
-              <button onClick={this.showForm}>Add New Post</button>
+              <button className="formShow" onClick={this.showForm}>+ Add New Post</button>
             }
             {this.state.categories.map(cat => (
               <li key={cat.name}>

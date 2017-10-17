@@ -8,31 +8,27 @@
 .post .postBody {
   position: relative;
   left:5%;
-  width: 90%;
+  width: 86%;
   font-size: .8em;
 }
 
 .post {
   position:relative;
-  background-color: lightgrey;
-  padding-bottom: 1px;
+  background-color: #E6EBEE;
+  min-height: 60px;
   margin-right: 20px;
   border-radius: 10px;
   box-shadow: 5px 5px grey;
   padding-left: 8px;
-}
-
-.post .detailsLink {
-  position: relative;
-  float: right;
-  bottom: 80px;
-  right: 10px;
+  padding-bottom: 1px;
+  color: #393F44;
 }
 
 .comment {
   float: right;
   width: 90%;
-  background-color: lightgrey;
+  background-color: #E6EBEE;
+  color: #393F44;
   border-radius: 10px;
   box-shadow: 5px 5px grey;
   padding-left: 6px;
@@ -51,9 +47,8 @@
 }
 
 .post .voteScore {
-  position: absolute;
-  float: left;
-  margin:auto;
+  float: right;
+  margin: 0px 40px 0px 0px;
 }
 
 .comment .voteScore {

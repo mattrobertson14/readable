@@ -25,9 +25,10 @@ class PostDetails extends Component {
   }
 
   render() {
+    let buttonContent = "<< Back To Main Page"
     return (
       <div className="postDetails">
-        <Link className="iBackButton" to="/"><button>Back To Main Page</button></Link>
+        <Link to="/"><button className="iBackButton">{buttonContent}</button></Link>
         <h2>Post Details</h2>
         <h3 className="iPostTitle">Title: {this.state.post.title}</h3>
         <p className="iPostBody"><b>Body:</b> {this.state.post.body}</p>

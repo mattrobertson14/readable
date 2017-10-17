@@ -9,7 +9,7 @@ class Post extends Component {
         <p className="title">{this.props.details? this.props.details.title : "N/A"}</p>
         <p className="voteScore">{this.props.details? this.props.details.voteScore : "N/A"}</p>
         <p className="postBody"><b>{this.props.details? this.props.details.author : "N/A"}:</b> {this.props.details? this.props.details.body : "N/A"}</p>
-        <Link className="detailsLink" to={"/details/"+this.props.details.id}><p>Full Details</p></Link>
+        <Link className="detailsLink" to={"/details/"+this.props.details.id}><p><i>Full Details</i></p></Link>
       </div>
     )
   }

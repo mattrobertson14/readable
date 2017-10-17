@@ -1,8 +1,12 @@
+.App {
+  color: lightgrey;
+}
+
 .App .siteTitle {
   padding: 15px;
   margin:auto;
   color:#ECF0F1;
-  background-color: #2C3E50;
+  background-color: #3F51B5;
 }
 
 .App .footer {
@@ -16,7 +20,7 @@
 .App .categories, .App .postDetails {
   position: absolute;
   width: 60%;
-  background-color: #EDBB99;
+  background-color: #C5CAE9;
   min-height: 100%;
   height: auto !important;
   margin-left: 20%;
@@ -26,6 +30,10 @@
   margin-top:0px;
   margin-bottom:-50px;
   padding-top:20px;
+}
+
+.App .categoryName, .App .postDetails {
+  color: black;
 }
 
 .App .postDetails h3, .App .postDetails p {
@@ -64,7 +72,10 @@
 }
 
 .detailsLink {
-  color: #2874A6;
+  position:relative;
+  color: #393F44;
+  left: 42%;
+  font-style: italic;
 }
 
 .NewPostField input:focus {
@@ -76,14 +87,17 @@
   border-bottom: solid #E5E7E9 2.5px;
   resize: none;
   outline: none;
+  color: black;
 }
 
 .NewPostField [contentEditable=true]:focus {
-  border-bottom: solid #3498DB 2.5px;
+  border-bottom: solid #2C3E50 2.5px;
+  color: black;
 }
 
 [contentEditable=true]:empty:not(:focus):before, [contentEditable=true]:focus:empty:before{
   content:attr(placeholder);
+  color: black;
 }
 
 #postTitle {
@@ -121,4 +135,41 @@
 .placeholder {
   margin:auto;
   padding-bottom: 3px;
+}
+
+.App .formSubmit, .App .formCancel {
+  position:relative;
+  margin:10px;
+  left: 40%;
+  border-radius: 8px;
+  height: 30px;
+  outline: none;
+}
+
+.App .formSubmit {
+  background-color: #0D763F;
+  color: inherit;
+}
+
+.App .formCancel {
+  background-color: #760D0D;
+  color: inherit;
+}
+
+.NewPostField span {
+  color: black;
+}
+
+.App .formShow, .App .iBackButton {
+  position:relative;
+  margin:10px;
+  border-radius: 8px;
+  height: 30px;
+  outline: none;
+  background-color: #455A64;
+  color: #ECF0F1;
+}
+
+.App .formShow {
+  background-color: #0D763F;
 }
