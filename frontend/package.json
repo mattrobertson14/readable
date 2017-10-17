@@ -7,7 +7,11 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
+<<<<<<< HEAD
     "uuid": "^3.1.0"
+=======
+    "redux-thunk": "^2.2.0"
+>>>>>>> 704e62c3dcb82720e836cf90a4d4b1b99fd95d9b
   },
   "scripts": {
     "start": "react-scripts start",
