@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import * as ReadableAPI from '../ReadableAPI.js'
-import Comment from './Comment.js'
 import './Post.css'
 
 class Post extends Component {

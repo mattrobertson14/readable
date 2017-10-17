@@ -32,10 +32,10 @@
 .comment {
   float: right;
   width: 90%;
-  background-color: inherit;
-  border-radius: inherit;
-  box-shadow: inherit;
-  padding-left: 8px;
+  background-color: lightgrey;
+  border-radius: 10px;
+  box-shadow: 5px 5px grey;
+  padding-left: 6px;
   margin:10px;
   clear:both;
 }
@@ -50,10 +50,14 @@
   font-size: .8em;
 }
 
-.voteScore {
+.post .voteScore {
   position: absolute;
   float: left;
   margin:auto;
+}
+
+.comment .voteScore {
+  margin: auto;
 }
 
 .comment .author {
