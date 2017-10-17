@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as ReadableAPI from '../ReadableAPI.js'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Post.css'
 import Comment from './Comment'
 
@@ -27,6 +27,7 @@ class PostDetails extends Component {
   render() {
     return (
       <div className="postDetails">
+        <Link className="iBackButton" to="/"><button>Back To Main Page</button></Link>
         <h2>Post Details</h2>
         <h3 className="iPostTitle">Title: {this.state.post.title}</h3>
         <p className="iPostBody"><b>Body:</b> {this.state.post.body}</p>
@@ -35,7 +36,7 @@ class PostDetails extends Component {
         <p className="iTimestamp"><b>Timestamp:</b> {this.state.post.timestamp}</p>
         <p className="iId"><b>ID:</b> {this.state.post.id}</p>
         <p className="iPostCategory"><b>Category:</b> {this.state.post.category}</p>
-        <p className="iCommentsTitle"><b>Comments:</b></p>
+        <p className="iCommentsTitle"><b>Comments ({this.state.comments.length}):</b></p>
         {this.state.comments.sort((a,b)=>{
           return parseInt(a.voteScore,10)-parseInt(b.voteScore,10)
           }).map(com => (
