@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Route } from 'react-router-dom'
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Post from './Post.js'
 import PostDetails from './PostDetails.js'
 import * as ReadableAPI from '../ReadableAPI.js'
 import uuidv4 from 'uuid/v4'
+import 'font-awesome/css/font-awesome.min.css'
 
 class App extends Component {
   state = {
@@ -44,7 +45,7 @@ class App extends Component {
     let author = document.getElementById("postAuthor").innerText
     let category = document.getElementById("postCategory").value
     ReadableAPI.submitPost(id, timestamp, title, body, author, category).then((res) => {
-      let newpost = {id, timestamp, title, body, author, category}
+      let newpost = {id, timestamp, title, body, author, category, voteScore: 1}
       let oldposts = this.state.posts
       oldposts.push(newpost)
       this.setState({showNewPostForm : false, posts: oldposts})
@@ -61,25 +62,52 @@ class App extends Component {
               <span>
                 <NewPostField categories={this.state.categories} />
                 <button className="formSubmit" onClick={this.addPost}>Submit</button>
-                <button className="formCancel" onClick={this.closeForm}>Cancel</button>
+                <button className="formCancel" onClick={this.closeForm}>
+                  <i className="fa fa-times" /> Cancel
+                </button>
               </span> :
               <button className="formShow" onClick={this.showForm}>+ Add New Post</button>
             }
             {this.state.categories.map(cat => (
               <li key={cat.name}>
-                <Category catObj={cat}
+                <Category
+                  catObj={cat}
                   name={cat.name}
                   posts={this.state.posts}
+                  type="list"
                 />
               </li>
             ))}
           </ol>
         )} />
       <Route path="/details/:id" render={(props) => (
-            <div className="details">
-              <PostDetails {...props}/>
-            </div>
-        )} />
+          <div className="details">
+            <PostDetails {...props}/>
+          </div>
+      )} />
+      <Route path="/category/:name" render={(props) => (
+        <div className="singleCategory">
+          {this.state.showNewPostForm?
+            <span>
+              <NewPostField categories={this.state.categories} />
+              <button className="formSubmit" onClick={this.addPost}>Submit</button>
+              <button className="formCancel" onClick={this.closeForm}>
+                <i className="fa fa-times" /> Cancel
+              </button>
+            </span> :
+            <button className="formShow" onClick={this.showForm}>+ Add New Post</button>
+          }
+          {this.state.categories.filter((cat) => (cat.name === props.match.params.name)).map(cat => (
+            <Category
+              key={cat}
+              catObj={cat}
+              name={cat.name}
+              posts={this.state.posts}
+              type="single"
+            />
+          ))}
+        </div>
+      )} />
       </div>
     );
   }
@@ -88,9 +116,15 @@ class App extends Component {
 const Category = (props) =>{
   return (
     <div className="Category">
-      <h2 className="categoryName">{props.name.toUpperCase()}</h2>
+      <h2 className="categoryName">{props.name.toUpperCase()}
+        {(props.type == "list")? <Link className="categoryLink" to={`/category/${props.name}`}>Category View <i className="fa fa-arrow-right" /></Link> :
+        <Link className="backToListView" exact to="/">Category View</Link>
+      }
+      </h2>
       <ol className="posts">
-        {props.posts.filter(p => (p.category === props.name)).map(post => (
+        {props.posts.filter(p => (p.category === props.name)).sort((a,b) =>{
+          return parseInt(b.voteScore,10)-parseInt(a.voteScore,10)
+        }).map(post => (
           <li key={post.id}>
             <Post details={post} />
           </li>
@@ -100,7 +134,7 @@ const Category = (props) =>{
   )
 }
 
-const NewPostField = (props) => {
+export const NewPostField = (props) => {
   return (
     <div className="NewPostField">
       <span><b>Choose A Category:  </b></span>

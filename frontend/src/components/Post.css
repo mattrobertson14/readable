@@ -20,8 +20,13 @@
   border-radius: 10px;
   box-shadow: 5px 5px grey;
   padding-left: 8px;
-  padding-bottom: 1px;
+  padding-bottom: 5px;
   color: #393F44;
+}
+
+.voteScore i, .iVoteScore i {
+  position:relative;
+  padding: 0px 5px 0px 5px;
 }
 
 .comment {
@@ -48,7 +53,7 @@
 
 .post .voteScore {
   float: right;
-  margin: 0px 40px 0px 0px;
+  margin: 0px 20px 0px 0px;
 }
 
 .comment .voteScore {

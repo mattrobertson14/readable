@@ -11,17 +11,10 @@ html {
   margin:auto;
   color:#ECF0F1;
   background-color: #3F51B5;
+  box-shadow: 0px 3px lightgrey;
 }
 
-.App .footer {
-  position:absolute;
-  bottom:0;
-  width: 100%;
-  height: 66px;
-  background-color: #2C3E50;
-}
-
-.App .categories, .App .postDetails {
+.App .categories, .App .postDetails, .App .singleCategory {
   position: absolute;
   width: 60%;
   background-color: #C5CAE9;
@@ -30,14 +23,17 @@ html {
   margin-left: 20%;
   margin-right: 20%;
   list-style: none;
-  padding-left: 10px;
+  padding: 20px 10px 20px 10px;
   margin-top:0px;
   margin-bottom:-50px;
-  padding-top:20px;
 }
 
 .App .categoryName, .App .postDetails {
   color: black;
+}
+
+.App .categoryName {
+  border-bottom: 1px solid black;
 }
 
 .App .postDetails h3, .App .postDetails p {
@@ -54,14 +50,14 @@ html {
     width:100%;
   }
 
-  .App .categories {
+  .App .categories, .App .postDetails {
     position: absolute;
     width: 100%;
-    background-color: #EDBB99;
+    background-color: #C5CAE9;
     min-height: 10%;
     height: auto !important;
     height: 100%;
-    margin:auto;
+    margin: 0px 0px -50px 0px;
   }
 }
 
@@ -82,11 +78,11 @@ html {
   font-style: italic;
 }
 
-.NewPostField input:focus {
+.App input:focus {
   border-bottom: solid #3498DB 2.5px;
 }
 
-.NewPostField [contentEditable=true] {
+.App [contentEditable=true] {
   background-color: inherit;
   border-bottom: solid #E5E7E9 2.5px;
   resize: none;
@@ -94,7 +90,7 @@ html {
   color: black;
 }
 
-.NewPostField [contentEditable=true]:focus {
+.App [contentEditable=true]:focus {
   border-bottom: solid #2C3E50 2.5px;
   color: black;
 }
@@ -136,6 +132,18 @@ html {
   outline: none;
 }
 
+#commentAuthor {
+  position:relative;
+  width: 30%;
+  left: 4%;
+}
+#commentBody {
+  position:relative;
+  width: 80%;
+  left: 4%;
+  margin:10px;
+}
+
 .placeholder {
   margin:auto;
   padding-bottom: 3px;
@@ -148,32 +156,49 @@ html {
   border-radius: 8px;
   height: 30px;
   outline: none;
+  background-color: inherit;
+
+  box-shadow: 2px 2px grey;
+
 }
 
 .App .formSubmit {
-  background-color: #0D763F;
-  color: inherit;
+  border: 1px solid #0E7847;
+  color: #0E7847;
 }
 
 .App .formCancel {
-  background-color: #760D0D;
-  color: inherit;
+  border: 1px solid #780E2F;
+  color: #780E2F;
 }
 
 .NewPostField span {
   color: black;
 }
 
-.App .formShow, .App .iBackButton {
+.App .formShow, .App .iBackButton, .App .newCommentButton {
   position:relative;
   margin:10px;
   border-radius: 8px;
   height: 30px;
   outline: none;
-  background-color: #455A64;
-  color: #ECF0F1;
+  background-color: inherit;
+  border: 1px solid #3F51B5;
+  box-shadow: 2px 2px grey;
+  color: #3F51B5;
 }
 
-.App .formShow {
-  background-color: #0D763F;
+.App button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.App .categoryLink, .App .backToListView {
+  position:relative;
+  font-size: 14px;
+  text-decoration: none;
+  float: right;
+  top: 8px;
+  right: 8px;
+  color: black;
 }
