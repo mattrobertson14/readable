@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as ReadableAPI from '../ReadableAPI.js'
 
 class Comment extends Component {
   state = {
@@ -6,15 +7,19 @@ class Comment extends Component {
   }
 
   upVote = (id) => {
-    let comment = this.state.comment
-    comment.voteScore++
-    this.setState({comment})
+    ReadableAPI.changeVoteComment(id,"upVote").then((res) =>{
+      let comment = this.state.comment
+      comment.voteScore++
+      this.setState({comment})
+    })
   }
 
   downVote = (id) => {
-    let comment = this.state.comment
-    comment.voteScore--
-    this.setState({comment})
+    ReadableAPI.changeVoteComment(id,"downVote").then((res) =>{
+      let comment = this.state.comment
+      comment.voteScore--
+      this.setState({comment})
+    })
   }
 
   render() {

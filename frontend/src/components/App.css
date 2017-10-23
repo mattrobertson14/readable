@@ -78,6 +78,13 @@ html {
   font-style: italic;
 }
 
+.editLink {
+  color: #393F44;
+  font-size: 14px;
+  text-decoration: none;
+  padding-left: 8px;
+}
+
 .App input:focus {
   border-bottom: solid #3498DB 2.5px;
 }
@@ -176,7 +183,7 @@ html {
   color: black;
 }
 
-.App .formShow, .App .iBackButton, .App .newCommentButton {
+.App .formShow, .App .iBackButton, .App .newCommentButton, .App .editButton {
   position:relative;
   margin:10px;
   border-radius: 8px;
@@ -186,6 +193,11 @@ html {
   border: 1px solid #3F51B5;
   box-shadow: 2px 2px grey;
   color: #3F51B5;
+}
+
+.App .editButton {
+  margin: 0;
+  bottom: 5px;
 }
 
 .App button:active {

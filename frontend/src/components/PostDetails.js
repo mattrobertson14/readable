@@ -27,15 +27,19 @@ class PostDetails extends Component {
   }
 
   upVote = (id) => {
-    let post = this.state.post
-    post.voteScore++
-    this.setState({post})
+    ReadableAPI.changeVote(id,"upVote").then((res) =>{
+      let post = this.state.post
+      post.voteScore++
+      this.setState({post})
+    })
   }
 
   downVote = (id) => {
-    let post = this.state.post
-    post.voteScore--
-    this.setState({post})
+    ReadableAPI.changeVote(id,"downVote").then((res) =>{
+      let post = this.state.post
+      post.voteScore--
+      this.setState({post})
+    })
   }
 
   addComment = () => {
@@ -58,7 +62,12 @@ class PostDetails extends Component {
     return (
       <div className="postDetails">
         <Link to="/"><button className="iBackButton">{buttonContent}</button></Link>
-        <h2>Post Details</h2>
+        <h2>Post Details
+          <Link
+            className="editLink"
+            to={`/details/${this.state.post.id}/edit`}
+            ><button className="editButton"><i className="fa fa-pencil" /> Edit Post</button></Link>
+          </h2>
         <h3 className="iPostTitle">Title: {this.state.post.title}</h3>
         <p className="iPostBody"><b>Body:</b> {this.state.post.body}</p>
         <p className="iAuthor"><b>Author:</b> {this.state.post.author}</p>

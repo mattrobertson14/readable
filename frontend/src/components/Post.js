@@ -40,17 +40,4 @@ class Post extends Component {
   }
 }
 
-export const PostDetails = (props) => {
-  return (
-    <div className="postDetails">
-      <h2>Post Details</h2>
-      <h3 className="detailsTitle">Title</h3>
-      <p className="postBody">Body of a post</p>
-      <p className="author">Author</p>
-      <p className="timestamp">12PM 12-12-12</p>
-      <p className="voteScore">1</p>
-    </div>
-  )
-}
-
 export default Post

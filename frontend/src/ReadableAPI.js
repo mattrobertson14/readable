@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const serverAddress = 'http://ischyros.byu.edu:3001';
+/*const serverAddress = 'http://ischyros.byu.edu:3001';*/
+const serverAddress = 'http://localhost:3001';
 
 export const getAllPosts = () => {
   return new Promise((resolve, reject)=>{
@@ -84,6 +85,19 @@ export const addComment = (id, timestamp, body, author, parentId) => {
     body,
     author,
     parentId
+  }, {
+    headers: {'Authorization' : 'something'},
+    withCredentials: true
+  }).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+}
+
+export const changeVoteComment = (id, option) => {
+  return axios.post(`${serverAddress}/comments/${id}`, {
+    option
   }, {
     headers: {'Authorization' : 'something'},
     withCredentials: true

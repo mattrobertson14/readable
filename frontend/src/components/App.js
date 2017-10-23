@@ -80,7 +80,7 @@ class App extends Component {
             ))}
           </ol>
         )} />
-      <Route path="/details/:id" render={(props) => (
+      <Route exact path="/details/:id" render={(props) => (
           <div className="details">
             <PostDetails {...props}/>
           </div>
@@ -117,7 +117,7 @@ const Category = (props) =>{
   return (
     <div className="Category">
       <h2 className="categoryName">{props.name.toUpperCase()}
-        {(props.type == "list")? <Link className="categoryLink" to={`/category/${props.name}`}>Category View <i className="fa fa-arrow-right" /></Link> :
+        {(props.type === "list")? <Link className="categoryLink" to={`/category/${props.name}`}>Category View <i className="fa fa-arrow-right" /></Link> :
         <Link className="backToListView" exact to="/">Category View</Link>
       }
       </h2>
