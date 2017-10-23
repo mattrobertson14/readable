@@ -9,7 +9,8 @@ class PostDetails extends Component {
   state = {
     post: {},
     comments: [],
-    showCommentForm: false
+    showCommentForm: false,
+    editForm: false
   }
 
   componentDidMount() {
@@ -42,6 +43,18 @@ class PostDetails extends Component {
     })
   }
 
+  submitEdit = () => {
+    let id = this.state.post.id
+    let title = document.getElementById("formTitle").innerText
+    let body = document.getElementById("formBody").innerText
+    ReadableAPI.editPost(id, title, body).then((res) => {
+      let newpost = this.state.post
+      newpost.title = title;
+      newpost.body = body;
+      this.setState({post : newpost, editForm : false})
+    })
+  }
+
   addComment = () => {
     let id = uuidv4()
     let timestamp = Date.now()
@@ -62,14 +75,24 @@ class PostDetails extends Component {
     return (
       <div className="postDetails">
         <Link to="/"><button className="iBackButton">{buttonContent}</button></Link>
-        <h2>Post Details
-          <Link
-            className="editLink"
-            to={`/details/${this.state.post.id}/edit`}
-            ><button className="editButton"><i className="fa fa-pencil" /> Edit Post</button></Link>
+        {!this.state.editForm? <span className="detailsNoEdit">
+          <h2>Post Details
+            <button className="editButton" onClick={()=>{this.setState({editForm : true})}}><i className="fa fa-pencil" /> Edit Post</button>
           </h2>
-        <h3 className="iPostTitle">Title: {this.state.post.title}</h3>
-        <p className="iPostBody"><b>Body:</b> {this.state.post.body}</p>
+          <h3 className="iPostTitle">Title: {this.state.post.title}</h3>
+          <p className="iPostBody"><b>Body:</b> {this.state.post.body}</p>
+          </span> :
+          <span className="detailsEdit">
+            <h2>Post Details
+              <button className="submitEditButton" onClick={this.submitEdit}>Save</button>
+              <button className="cancelEditButton" onClick={()=>{this.setState({editForm : false})}}><i className="fa fa-times" /> Exit Editing</button>
+            </h2>
+            <h3>Title: </h3>
+            <div contentEditable={true} id="formTitle" className="iEditPostTitle">{this.state.post.title}</div>
+            <h3>Body: </h3>
+            <div contentEditable="true" id="formBody" className="iEditPostBody">{this.state.post.body}</div>
+          </span>
+        }
         <p className="iAuthor"><b>Author:</b> {this.state.post.author}</p>
         <p className="iVoteScore"><b>Votescore:</b>
           <a onClick={() => this.downVote(this.state.post.id)}><i className="fa fa-thumbs-o-down"/></a>

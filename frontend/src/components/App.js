@@ -118,7 +118,7 @@ const Category = (props) =>{
     <div className="Category">
       <h2 className="categoryName">{props.name.toUpperCase()}
         {(props.type === "list")? <Link className="categoryLink" to={`/category/${props.name}`}>Category View <i className="fa fa-arrow-right" /></Link> :
-        <Link className="backToListView" exact to="/">Category View</Link>
+        <Link className="backToListView" to="/"><i className="fa fa-arrow-left" /> Main Page</Link>
       }
       </h2>
       <ol className="posts">

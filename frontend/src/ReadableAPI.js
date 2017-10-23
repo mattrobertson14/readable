@@ -108,6 +108,34 @@ export const changeVoteComment = (id, option) => {
   })
 }
 
+export const editPost = (id, title, body) => {
+  return axios.put(`${serverAddress}/posts/${id}`, {
+    title,
+    body
+  }, {
+    headers: {'Authorization' : 'something'},
+    withCredentials: true
+  }).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+}
+
+export const editComment = (id, timestamp, body) => {
+  return axios.put(`${serverAddress}/comments/${id}`, {
+    timestamp,
+    body
+  }, {
+    headers: {'Authorization' : 'something'},
+    withCredentials: true
+  }).then((response) => {
+    console.log(response)
+  }).catch((error) => {
+    console.log(error)
+  })
+}
+
 
 /* TEMPLATE FOR NEW API CALL:
 

@@ -85,10 +85,6 @@ html {
   padding-left: 8px;
 }
 
-.App input:focus {
-  border-bottom: solid #3498DB 2.5px;
-}
-
 .App [contentEditable=true] {
   background-color: inherit;
   border-bottom: solid #E5E7E9 2.5px;
@@ -105,6 +101,11 @@ html {
 [contentEditable=true]:empty:not(:focus):before, [contentEditable=true]:focus:empty:before{
   content:attr(placeholder);
   color: black;
+}
+
+#formTitle, #formBody {
+  margin-left: 30px;
+  width: 80%;
 }
 
 #postTitle {
@@ -169,21 +170,12 @@ html {
 
 }
 
-.App .formSubmit {
-  border: 1px solid #0E7847;
-  color: #0E7847;
-}
-
-.App .formCancel {
-  border: 1px solid #780E2F;
-  color: #780E2F;
-}
-
 .NewPostField span {
   color: black;
 }
 
-.App .formShow, .App .iBackButton, .App .newCommentButton, .App .editButton {
+.App .formShow, .App .iBackButton, .App .newCommentButton, .App .editButton,
+.App .submitEditButton, .App .cancelEditButton {
   position:relative;
   margin:10px;
   border-radius: 8px;
@@ -195,8 +187,17 @@ html {
   color: #3F51B5;
 }
 
-.App .editButton {
-  margin: 0;
+.App .formSubmit, .App .submitEditButton {
+  border: 1px solid #0E7847;
+  color: #0E7847;
+}
+
+.App .formCancel, .App .cancelEditButton {
+  border: 1px solid #780E2F;
+  color: #780E2F;
+}
+
+.App .editButton, .App .submitEditButton, .App .cancelEditButton {
   bottom: 5px;
 }
 
@@ -213,4 +214,17 @@ html {
   top: 8px;
   right: 8px;
   color: black;
+}
+
+.editCommentButton, .saveEditCommentButton, .cancelEditCommentButton, .editCommentBody {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.editCommentBody {
+  margin: 15px;
+  width: 80%;
+  margin-left: 30px;
+  border-bottom: solid 1px black;
 }
