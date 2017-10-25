@@ -62,6 +62,24 @@ html {
   }
 }
 
+.App .sortingDropdown {
+  outline: none;
+  border-radius: 8px;
+  height: 30px;
+  margin: 5px;
+  background-color: lightgrey;
+  border: 1px solid #3F51B5;
+  color: #3F51B5;
+  highlight:
+}
+
+.App .sortTitle {
+  margin-left: 10px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .App .posts {
   padding-left: 4%;
   list-style: none;

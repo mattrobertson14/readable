@@ -17,6 +17,9 @@ class App extends Component {
 
   componentDidMount() {
     ReadableAPI.getAllPosts().then( res => {
+      res.sort((a,b) =>{
+        return parseInt(b.voteScore,10)-parseInt(a.voteScore,10)
+      })
       this.setState({ posts : res })
     }).catch(error=>{
       console.log("No posts were retrieved")
@@ -35,6 +38,31 @@ class App extends Component {
 
   closeForm = () => {
     this.setState({ showNewPostForm : false })
+  }
+
+  sortPosts = (event) => {
+    let new_sort = this.state.posts
+    if (event.target.value === "voteScoreH"){
+      new_sort.sort((a,b) =>{
+        return parseInt(b.voteScore,10)-parseInt(a.voteScore,10)
+      })
+      this.setState({ posts : new_sort })
+    } else if(event.target.value === "voteScoreL"){
+      new_sort.sort((a,b) => {
+        return parseInt(a.voteScore,10)-parseInt(b.voteScore,10)
+      })
+      this.setState({ posts : new_sort })
+    } else if (event.target.value === "timestampN"){
+      new_sort.sort((a,b) => {
+        return parseInt(b.timestamp,10)-parseInt(a.timestamp,10)
+      })
+      this.setState({ posts : new_sort })
+    } else if (event.target.value === "timestampO"){
+      new_sort.sort((a,b) => {
+        return parseInt(a.timestamp,10)-parseInt(b.timestamp,10)
+      })
+      this.setState({ posts : new_sort })
+    }
   }
 
   addPost = () => {
@@ -67,7 +95,14 @@ class App extends Component {
                 </button>
               </span> :
               <button className="formShow" onClick={this.showForm}>+ Add New Post</button>
-            }
+            }<br/>
+          <span className="sortTitle">Sort By: </span>
+          <select className="sortingDropdown" onChange={this.sortPosts}>
+              <option value="voteScoreH">Vote Score High to Low</option>
+              <option value="voteScoreL">Vote Score Low to High</option>
+              <option value="timestampN">Timestamp New to Old</option>
+              <option value="timestampO">Timestamp Old to New</option>
+            </select>
             {this.state.categories.map(cat => (
               <li key={cat.name}>
                 <Category
@@ -96,7 +131,14 @@ class App extends Component {
               </button>
             </span> :
             <button className="formShow" onClick={this.showForm}>+ Add New Post</button>
-          }
+          }<br/>
+        <span className="sortTitle">Sort By: </span>
+        <select className="sortingDropdown" onChange={this.sortPosts}>
+            <option value="voteScoreH">Vote Score High to Low</option>
+            <option value="voteScoreL">Vote Score Low to High</option>
+            <option value="timestampN">Timestamp New to Old</option>
+            <option value="timestampO">Timestamp Old to New</option>
+          </select>
           {this.state.categories.filter((cat) => (cat.name === props.match.params.name)).map(cat => (
             <Category
               key={cat}
@@ -122,9 +164,7 @@ const Category = (props) =>{
       }
       </h2>
       <ol className="posts">
-        {props.posts.filter(p => (p.category === props.name)).sort((a,b) =>{
-          return parseInt(b.voteScore,10)-parseInt(a.voteScore,10)
-        }).map(post => (
+        {props.posts.filter(p => (p.category === props.name)).map(post => (
           <li key={post.id}>
             <Post details={post} />
           </li>
